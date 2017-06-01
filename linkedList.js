@@ -51,7 +51,7 @@ function LinkedList(){
 			console.log("Error");
 			return false;
 		}
-		var current = head;
+		var current = head,
 			index = 0,
 			nextNode;
 		if(position==0){
@@ -67,6 +67,7 @@ function LinkedList(){
 	}
 	this.remove = function(element){
 		this.removeAt(this.indexOf(element));
+		length--;
 	}
 	this.indexOf = function(element){
 		var current = head,

@@ -14,20 +14,76 @@ function hashMap(){
 		}
 		return hash % 37;
 	}
+	var VaulePair = function(key,value){
+		this.key = key;
+		this.value = value;
+	}
 	this.put = function(key,value){
-		if(table[loseloseHashCode(key)] === undefined){
-			var queue = new LinkedList();
-			queue.in
-			table[loseloseHashCode(key)] = queue;
-		}else{
-
+		var position = loseloseHashCode(key);
+		if(table[position] == undefined){
+			table[position] = new LinkedList();
 		}
+		table[position].append(new VaulePair(key,value));
 	}
 	this.remove = function(key){
-		table[loseloseHashCode(key)] = undefined; // just let this position be undefined,don't need delete;
+		var position = loseloseHashCode(key);
+		if(table[position] == undefined){
+			return false;
+		}else{
+			var current = table[position].getHead();
+			while(current.next){
+				if(current.element.key == key){
+					table[position].remove(current.element);
+					if(table[position].isEmpty()){
+						table[position] = undefined;
+					}
+					return true;
+				}
+				current =current.next;
+			}
+			if(current.element.key = key){
+				table[position].remove(current.element);
+				if(table[position].isEmpty()){
+					table[position] = undefined;
+				}
+				return true;
+			}
+		} // just let this position be undefined,don't need delete;
 	}
 	this.get = function(key){
-		return table[loseloseHashCode(key)];
+		var position = loseloseHashCode(key);
+		if(table[position] == undefined){
+			return undefined;
+		}else{
+			var current = table[position].getHead();
+			while(current.next){
+				if(current.element.key == key){
+					return current.element.value;
+				}
+				current =current.next;
+			}
+			if(current.element.key = key){
+				return current.element.value;
+			}
+		}
+
 	}
 	// other function same as;
 }
+
+var hash = new hashMap();
+
+hash.put("Jma","seaseeyoul@qq.com");
+hash.put("Jam","1095364870@qq.com");
+hash.put("Jone","1095364870@qq.com");
+console.log(1,hash.get("Jma"));
+console.log(2,hash.get("Jam"));
+console.log(3,hash.get("Jone"));
+console.log(4,hash.remove("Jone"));
+console.log(5,hash.get("Jone"));
+
+
+
+
+
+
