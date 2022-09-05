@@ -106,7 +106,7 @@ function LinkedList(){
 	}
 	this.print = function(){
 		var linkListPrintStr = this.toString();
-		linkListPrintStr === null ? console.log('linklist is nill') : console.log(linkListPrintStr);
+		linkListPrintStr === null ? console.log('linklist is null') : console.log(linkListPrintStr);
 	}
 }
 /*

@@ -50,11 +50,13 @@ function Dictionary(){
 		return items;
 	}
 }
-
+/*
 var d = new Dictionary();
 
 d.set("name","seaseeyoul");
 console.log(d.values(),d.size(),d.get("name"));
+*/
 
+module.exports = Dictionary;
 
 
